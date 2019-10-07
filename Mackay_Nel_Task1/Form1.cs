@@ -18,7 +18,8 @@ namespace Mackay_Nel_Task1
     public partial class Form1 : Form
     {
         GameEngine engine;
-        BinaryFormatter bf = new BinaryFormatter();
+
+        public Map map { get; private set; }
 
         public Form1()
         {
@@ -46,44 +47,51 @@ namespace Mackay_Nel_Task1
             engine.Update();
         }
 
+        private void loadBttn_Click(object sender, EventArgs e)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream("SaveGame.bat", FileMode.Open, FileAccess.Read, FileShare.None);
+           
+            try
+            {
+                using (fs)
+                {
+                    map = (Map)bf.Deserialize(fs);
+                    
+                    MessageBox.Show("The game has been loaded");
+                }
+            }
+               
+            catch (Exception ex)
+            {
+                MessageBox.Show("The game has not been loaded");
+            }
+
+
+        }
+
         private void saveBttn_Click(object sender, EventArgs e)
         {
             //timer1.Enabled = false;
             int n = 40;
             int bu = 4;
             Map map = new Map( n, bu , infoTxtBox);
-            
-            
 
+
+            BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream("SaveGame.bat", FileMode.Create, FileAccess.Write, FileShare.None);
             try
             {
                 using (fs)
-                    bf.Serialize(fs,map.Units);
-                    bf.Serialize(fs,map.Buildings);
+                    bf.Serialize(fs,map);
+                    
             }
-            catch (Exception r)
+            catch (Exception ex)
             {
                 MessageBox.Show ("The game has been saved");
             }
 
         }
 
-        private void loadBttn_Click(object sender, EventArgs e)
-        {
-            FileStream fs = new FileStream("SaveGame.bat", FileMode.Open, FileAccess.Read, FileShare.None);
-
-            try
-            {
-                Building b = (Building)bf.Deserialize(fs);
-                Unit u = (Unit)bf.Deserialize(fs);
-            }
-            catch (Exception r)
-            {
-                MessageBox.Show("The game has been loaded");
-            }
-
-
-        }
     }
 }
