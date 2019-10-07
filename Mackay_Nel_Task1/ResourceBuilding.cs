@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Mackay_Nel_Task1
-{
+{//This class holds all variables for the resource buildings.
     [Serializable]
     class ResourceBuilding : Building //All Part of task 2
     {

@@ -46,9 +46,10 @@ namespace Mackay_Nel_Task1
             roundLbl.Text = "Round: " + engine.Round.ToString();
             engine.Update();
         }
-
+        //Below are the Save and Load buttons that are supposed to save the map class and then load it again...
+        //But I have been struggling to get it to work.
         private void loadBttn_Click(object sender, EventArgs e)
-        {
+        {//load button
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream("SaveGame.bat", FileMode.Open, FileAccess.Read, FileShare.None);
            
@@ -71,7 +72,7 @@ namespace Mackay_Nel_Task1
         }
 
         private void saveBttn_Click(object sender, EventArgs e)
-        {
+        {//save button
             //timer1.Enabled = false;
             int n = 40;
             int bu = 4;

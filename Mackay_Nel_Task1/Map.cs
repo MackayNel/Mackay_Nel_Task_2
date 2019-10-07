@@ -8,7 +8,7 @@ using System.IO;
 using System.Windows.Forms;
 
 namespace Mackay_Nel_Task1
-{
+{//This class generates all the buildings and units on the map
     [Serializable]
     public class Map
     {

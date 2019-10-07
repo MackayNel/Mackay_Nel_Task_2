@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Mackay_Nel_Task1
-{
+{//This is the Base Class for all units.
     [Serializable]
     public abstract class Unit
     {

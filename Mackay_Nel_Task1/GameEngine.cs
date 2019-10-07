@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mackay_Nel_Task1
-{
+{//This class is used to tell all the units and buildings how to behave.
     [Serializable]
     class GameEngine 
     {
